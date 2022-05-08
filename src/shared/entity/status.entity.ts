@@ -1,7 +1,7 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { CategoryStatusEnum }                     from '@shared/enum/status.enum';
 
-@Entity('status')
+@Entity({ name: 'status', synchronize: true, database: 'tecnoservi' })
 export class StatusEntity {
   @PrimaryGeneratedColumn({
     type: 'int',
@@ -18,7 +18,7 @@ export class StatusEntity {
   @Column({
     type: 'enum',
     enum: CategoryStatusEnum,
-    default: 'active',
+    default: CategoryStatusEnum.USER,
   })
   category: CategoryStatusEnum;
 }
